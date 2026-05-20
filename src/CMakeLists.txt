@@ -260,6 +260,11 @@ if (WIN32)
     endif ()
 endif ()
 
+# We link against webkit2gtk symbols in src/slic3r/GUI/Widgets/WebView.cpp
+if (CMAKE_SYSTEM_NAME STREQUAL "Linux")
+    target_link_libraries(libslic3r_gui PRIVATE webkit2gtk-4.1)
+endif ()
+
 # Link the resources dir to where Slic3r GUI expects it
 if (WIN32)
     if (CMAKE_CONFIGURATION_TYPES)
